@@ -1,0 +1,151 @@
+id,product,category,quantity,price,status
+1,Headphones,Audio,1,52.63,completed
+2,Smartphone,Electronics,2,511.63,completed
+3,Headphones,Audio,5,71.52,pending
+4,Laptop,Electronics,1,939.01,completed
+5,Mouse,Peripherals,5,27.52,completed
+6,Headphones,Audio,5,172.95,pending
+7,Mouse,Peripherals,3,101.90,completed
+8,USB-C Hub,Accessories,2,65.38,completed
+9,Monitor,Peripherals,2,302.73,completed
+10,Laptop,Electronics,1,1210.93,completed
+11,USB-C Hub,Accessories,3,59.24,completed
+12,Headphones,Audio,4,208.55,pending
+13,Laptop,Electronics,5,1128.52,refunded
+14,Mouse,Peripherals,3,79.85,refunded
+15,Laptop,Electronics,1,1478.20,completed
+16,Laptop,Electronics,2,1673.16,pending
+17,Monitor,Peripherals,4,542.34,completed
+18,Smartphone,Electronics,3,684.22,refunded
+19,Monitor,Peripherals,1,527.20,completed
+20,Mouse,Peripherals,2,40.52,pending
+21,Monitor,Peripherals,5,305.18,completed
+22,USB-C Hub,Accessories,1,34.89,completed
+23,USB-C Hub,Accessories,3,46.08,completed
+24,Smartphone,Electronics,5,1101.09,completed
+25,Smartphone,Electronics,4,716.51,refunded
+26,Keyboard,Peripherals,2,102.38,completed
+27,Headphones,Audio,5,209.39,refunded
+28,Mouse,Peripherals,4,110.29,pending
+29,Monitor,Peripherals,2,748.48,completed
+30,Mouse,Peripherals,4,33.64,completed
+31,USB-C Hub,Accessories,1,29.93,completed
+32,USB-C Hub,Accessories,4,58.77,pending
+33,Keyboard,Peripherals,5,219.38,cancelled
+34,Monitor,Peripherals,5,670.64,completed
+35,Headphones,Audio,1,252.92,cancelled
+36,USB-C Hub,Accessories,3,69.96,completed
+37,Laptop,Electronics,3,1263.03,pending
+38,Laptop,Electronics,3,1773.29,completed
+39,Mouse,Peripherals,1,107.70,completed
+40,USB-C Hub,Accessories,5,59.58,completed
+41,Monitor,Peripherals,2,487.45,cancelled
+42,Laptop,Electronics,5,1157.95,completed
+43,Laptop,Electronics,3,1684.79,completed
+44,Smartphone,Electronics,1,592.70,cancelled
+45,Laptop,Electronics,1,1545.31,completed
+46,USB-C Hub,Accessories,5,69.78,completed
+47,Headphones,Audio,4,333.79,completed
+48,Monitor,Peripherals,5,677.29,pending
+49,Smartphone,Electronics,5,1004.21,refunded
+50,Smartphone,Electronics,3,719.19,refunded
+51,Headphones,Audio,3,178.62,cancelled
+52,Keyboard,Peripherals,1,99.66,completed
+53,Monitor,Peripherals,1,515.34,completed
+54,Mouse,Peripherals,2,25.68,refunded
+55,Headphones,Audio,1,114.83,completed
+56,USB-C Hub,Accessories,3,24.61,completed
+57,Monitor,Peripherals,4,302.11,completed
+58,Headphones,Audio,5,220.74,completed
+59,USB-C Hub,Accessories,4,72.49,completed
+60,Laptop,Electronics,1,1476.03,completed
+61,Keyboard,Peripherals,4,134.72,refunded
+62,Laptop,Electronics,1,907.58,refunded
+63,Monitor,Peripherals,1,321.73,completed
+64,Mouse,Peripherals,4,38.32,completed
+65,Monitor,Peripherals,4,322.39,completed
+66,Keyboard,Peripherals,5,75.67,refunded
+67,Mouse,Peripherals,1,117.05,completed
+68,Smartphone,Electronics,4,788.51,completed
+69,USB-C Hub,Accessories,4,78.66,completed
+70,Keyboard,Peripherals,1,217.65,completed
+71,USB-C Hub,Accessories,4,38.54,refunded
+72,Headphones,Audio,5,246.87,pending
+73,Smartphone,Electronics,2,637.37,completed
+74,Mouse,Peripherals,5,30.79,completed
+75,Laptop,Electronics,1,1404.97,cancelled
+76,USB-C Hub,Accessories,5,30.23,cancelled
+77,Laptop,Electronics,2,915.10,completed
+78,Headphones,Audio,2,168.15,cancelled
+79,Smartphone,Electronics,5,875.62,cancelled
+80,Laptop,Electronics,4,1474.50,cancelled
+81,Mouse,Peripherals,3,113.80,completed
+82,Headphones,Audio,3,117.80,pending
+83,Smartphone,Electronics,3,765.78,completed
+84,Laptop,Electronics,4,1440.10,cancelled
+85,Laptop,Electronics,1,1360.75,cancelled
+86,Monitor,Peripherals,2,711.96,completed
+87,Smartphone,Electronics,3,627.99,pending
+88,USB-C Hub,Accessories,5,65.73,cancelled
+89,USB-C Hub,Accessories,5,20.51,cancelled
+90,Monitor,Peripherals,1,715.19,completed
+91,Monitor,Peripherals,1,687.14,refunded
+92,Mouse,Peripherals,2,50.87,cancelled
+93,Smartphone,Electronics,3,562.88,refunded
+94,USB-C Hub,Accessories,3,52.85,completed
+95,USB-C Hub,Accessories,1,26.00,pending
+96,USB-C Hub,Accessories,3,22.87,completed
+97,USB-C Hub,Accessories,2,61.41,completed
+98,Smartphone,Electronics,4,841.34,pending
+99,Mouse,Peripherals,1,35.63,refunded
+100,Smartphone,Electronics,5,428.82,completed
+101,Mouse,Peripherals,5,39.07,completed
+102,Laptop,Electronics,3,1196.42,completed
+103,Monitor,Peripherals,2,568.78,refunded
+104,Laptop,Electronics,3,1591.11,pending
+105,Mouse,Peripherals,2,112.95,completed
+106,USB-C Hub,Accessories,2,83.45,completed
+107,Keyboard,Peripherals,1,88.70,completed
+108,USB-C Hub,Accessories,4,72.15,refunded
+109,USB-C Hub,Accessories,2,37.34,refunded
+110,Laptop,Electronics,4,1678.56,pending
+111,Smartphone,Electronics,2,1053.27,pending
+112,Monitor,Peripherals,3,647.71,completed
+113,Smartphone,Electronics,1,928.03,pending
+114,Monitor,Peripherals,3,672.68,completed
+115,Monitor,Peripherals,5,407.82,cancelled
+116,Monitor,Peripherals,1,245.74,completed
+117,Smartphone,Electronics,5,1170.03,completed
+118,Laptop,Electronics,1,1416.74,completed
+119,Headphones,Audio,3,178.10,cancelled
+120,Laptop,Electronics,4,1704.53,completed
+121,Monitor,Peripherals,1,584.01,completed
+122,Mouse,Peripherals,5,90.25,refunded
+123,Headphones,Audio,2,156.09,completed
+124,Headphones,Audio,3,235.06,refunded
+125,USB-C Hub,Accessories,1,66.78,completed
+126,Mouse,Peripherals,3,88.35,completed
+127,Keyboard,Peripherals,3,148.71,completed
+128,Keyboard,Peripherals,4,168.37,completed
+129,Mouse,Peripherals,5,53.59,cancelled
+130,USB-C Hub,Accessories,1,39.75,completed
+131,Keyboard,Peripherals,5,157.07,completed
+132,Keyboard,Peripherals,4,130.75,completed
+133,Mouse,Peripherals,4,100.40,refunded
+134,Smartphone,Electronics,1,627.03,refunded
+135,Headphones,Audio,5,147.23,completed
+136,Headphones,Audio,3,113.52,completed
+137,Smartphone,Electronics,1,436.97,pending
+138,Mouse,Peripherals,1,68.26,refunded
+139,Mouse,Peripherals,2,93.24,pending
+140,Keyboard,Peripherals,4,99.04,refunded
+141,Headphones,Audio,1,317.26,completed
+142,USB-C Hub,Accessories,4,34.22,refunded
+143,Mouse,Peripherals,4,29.77,completed
+144,USB-C Hub,Accessories,1,49.67,pending
+145,Headphones,Audio,5,346.31,cancelled
+146,Monitor,Peripherals,4,529.21,refunded
+147,Mouse,Peripherals,4,103.90,cancelled
+148,Keyboard,Peripherals,2,178.98,pending
+149,Keyboard,Peripherals,3,180.28,refunded
+150,Monitor,Peripherals,5,456.22,completed
