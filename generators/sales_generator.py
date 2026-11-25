@@ -1,10 +1,10 @@
 from iterators.sales_iterator import SaleRecord
 
 
-def _line_to_sale(line, headers):
+def _line_to_sale(line: str, headers: list[str]) -> SaleRecord:
     """перетворює рядок csv на SaleRecord"""
-    parts = [part.strip() for part in line.rstrip("\r\n").split(",")]
-    row = dict(zip(headers, parts))
+    parts: list[str] = [part.strip() for part in line.rstrip("\r\n").split(",")]
+    row: dict[str, str] = dict(zip(headers, parts))
     return SaleRecord(
         sale_id=int(row["id"]),
         product=row["product"],
@@ -15,21 +15,21 @@ def _line_to_sale(line, headers):
     )
 
 
-def read_sales(file_path):
+def read_sales(file_path: str):
     """читає csv файл і повертає записи"""
     with open(file_path, "r", encoding="utf-8") as csv_file:
-        header_line = csv_file.readline()
+        header_line: str = csv_file.readline()
         if not header_line:
             return
-        headers = [h.strip() for h in header_line.rstrip("\r\n").split(",")]
+        headers: list[str] = [h.strip() for h in header_line.rstrip("\r\n").split(",")]
         for line in csv_file:
             if line.strip():
                 yield _line_to_sale(line, headers)
 
 
-def filter_sales(sales, status):
+def filter_sales(sales, status: str):
     """фільтрує продажі за статусом"""
-    target_status = status.strip().lower()
+    target_status: str = status.strip().lower()
     for sale in sales:
         if sale.status.lower() == target_status:
             yield sale
@@ -37,18 +37,18 @@ def filter_sales(sales, status):
 
 def calculate_revenue(sales):
     """повертає послідовність проміжних значень виручки"""
-    running_revenue = 0.0
+    running_revenue: float = 0.0
     for sale in sales:
         running_revenue += sale.revenue
         yield running_revenue
 
 
-def generate_batches(sales, batch_size):
+def generate_batches(sales, batch_size: int):
     """розбиває записи на пакети заданого розміру"""
     if batch_size <= 0:
         raise ValueError("batch_size має бути більшим за 0")
 
-    batch = []
+    batch: list[SaleRecord] = []
     for sale in sales:
         batch.append(sale)
         if len(batch) == batch_size:
@@ -59,20 +59,26 @@ def generate_batches(sales, batch_size):
         yield batch
 
 
-def generate_top_products(sales, top_n=5, by="revenue"):
+def generate_top_products(sales, top_n: int = 5, by: str = "revenue"):
     """формує послідовність топ товарів за виручкою або кількістю"""
     if top_n <= 0:
         raise ValueError("top_n має бути більшим за 0")
     if by not in {"revenue", "quantity"}:
         raise ValueError("by має бути 'revenue' або 'quantity'")
 
-    totals = {}
+    totals: dict[str, int | float] = {}
     for sale in sales:
         if by == "revenue":
             totals[sale.product] = totals.get(sale.product, 0.0) + sale.revenue
         else:
             totals[sale.product] = totals.get(sale.product, 0) + sale.quantity
 
-    top_items = sorted(totals.items(), key=lambda item: item[1], reverse=True)[:top_n]
-    for product, value in top_items:
+    top_items: list[tuple[str, int | float]] = sorted(
+        totals.items(),
+        key=lambda item: item[1],
+        reverse=True,
+    )
+    for index, (product, value) in enumerate(top_items):
+        if index >= top_n:
+            break
         yield product, value

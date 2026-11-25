@@ -18,9 +18,9 @@ from services.analytics import (
 )
 
 
-def _parse_line_to_sale(line, headers):
-    parts = [part.strip() for part in line.rstrip("\r\n").split(",")]
-    row = dict(zip(headers, parts))
+def _parse_line_to_sale(line: str, headers: list[str]) -> SaleRecord:
+    parts: list[str] = [part.strip() for part in line.rstrip("\r\n").split(",")]
+    row: dict[str, str] = dict(zip(headers, parts))
     return SaleRecord(
         sale_id=int(row["id"]),
         product=row["product"],
@@ -31,15 +31,17 @@ def _parse_line_to_sale(line, headers):
     )
 
 
-def print_analytics(csv_path):
+def print_analytics(csv_path: str) -> None:
     """виводить аналітику продажів без завантаження всього файлу"""
-    sales_count = total_sales_count(read_sales(csv_path))
-    completed_count = sum(1 for item in filter_sales(read_sales(csv_path), "completed"))
-    revenue_total = total_revenue(read_sales(csv_path), only_completed=True)
-    avg_check = average_check(read_sales(csv_path), only_completed=True)
-    popular_product = most_popular_product(read_sales(csv_path), only_completed=True)
-    profitable_category = most_profitable_category(read_sales(csv_path), only_completed=True)
-    top_5 = top_5_products_by_revenue(read_sales(csv_path), only_completed=True)
+    sales_count: int = total_sales_count(read_sales(csv_path))
+    completed_count: int = sum(1 for item in filter_sales(read_sales(csv_path), "completed"))
+    revenue_total: float = total_revenue(read_sales(csv_path), only_completed=True)
+    avg_check: float = average_check(read_sales(csv_path), only_completed=True)
+    popular_product: str | None = most_popular_product(read_sales(csv_path), only_completed=True)
+    profitable_category: str | None = most_profitable_category(read_sales(csv_path), only_completed=True)
+    top_5: list[tuple[str, int | float]] = top_5_products_by_revenue(
+        read_sales(csv_path), only_completed=True
+    )
 
     print("аналітика продажів")
     print(f"усього продажів {sales_count}")
@@ -55,20 +57,20 @@ def print_analytics(csv_path):
         print(f"{index}. {product} — {revenue:.2f}")
 
 
-def compare_memory_usage(csv_path):
+def compare_memory_usage(csv_path: str) -> tuple[float, float]:
     """порівнює використання пам'яті списку та генератора через tracemalloc"""
     tracemalloc.start()
     with open(csv_path, "r", encoding="utf-8") as csv_file:
-        header_line = csv_file.readline()
-        headers = [h.strip() for h in header_line.rstrip("\r\n").split(",")]
-        records_list = [
+        header_line: str = csv_file.readline()
+        headers: list[str] = [h.strip() for h in header_line.rstrip("\r\n").split(",")]
+        records_list: list[SaleRecord] = [
             _parse_line_to_sale(line, headers)
             for line in csv_file
             if line.strip()
         ]
-    list_revenue_total = sum(item.revenue for item in records_list if item.status == "completed")
-    list_memory_info = tracemalloc.get_traced_memory()
-    list_peak = list_memory_info[1]
+    list_revenue_total: float = sum(item.revenue for item in records_list if item.status == "completed")
+    list_memory_info: tuple[int, int] = tracemalloc.get_traced_memory()
+    list_peak: int = list_memory_info[1]
     tracemalloc.stop()
 
     tracemalloc.start()
@@ -80,37 +82,39 @@ def compare_memory_usage(csv_path):
             for line in csv_file
             if line.strip()
         )
-        gen_revenue_total = sum(item.revenue for item in gen_records if item.status == "completed")
-    gen_memory_info = tracemalloc.get_traced_memory()
-    gen_peak = gen_memory_info[1]
+        gen_revenue_total: float = sum(item.revenue for item in gen_records if item.status == "completed")
+    gen_memory_info: tuple[int, int] = tracemalloc.get_traced_memory()
+    gen_peak: int = gen_memory_info[1]
     tracemalloc.stop()
 
     print(f"перевірена виручка {list_revenue_total:.2f} / {gen_revenue_total:.2f}")
     return list_peak / 1024, gen_peak / 1024
 
 
-def main():
+def main() -> None:
     """запускає основну програму та всі доп.завдання"""
-    csv_path = "data/sales.csv"
+    csv_path: str = "data/sales.csv"
 
     print_analytics(csv_path)
 
     it = SalesIterator(read_sales(csv_path))
-    first_item = next(it)
+    first_item: SaleRecord = next(it)
     print("перший запис з ітератора продажів", first_item)
 
     it_cat = SalesIterator(read_sales(csv_path), category="Electronics")
-    electronics_items = list(it_cat)
+    electronics_items: list[SaleRecord] = list(it_cat)
     print("кількість записів у категорії Electronics", len(electronics_items))
 
-    running_revenues = list(calculate_revenue(filter_sales(read_sales(csv_path), "completed")))
+    running_revenues: list[float] = list(
+        calculate_revenue(filter_sales(read_sales(csv_path), "completed"))
+    )
     print("кількість проміжних значень виручки", len(running_revenues))
 
-    batches = list(generate_batches(read_sales(csv_path), batch_size=25))
+    batches: list[list[SaleRecord]] = list(generate_batches(read_sales(csv_path), batch_size=25))
     print("кількість пакетів", len(batches))
 
     id_gen = infinite_sale_id_generator(start=1000)
-    generated_ids = []
+    generated_ids: list[int] = []
     for _ in range(3):
         generated_ids.append(next(id_gen))
     print("нескінченні ID", generated_ids)
@@ -124,7 +128,7 @@ def main():
         "висновок. список тримає всі записи в пам'яті одночасно, а генератор обробляє їх по черзі"
     )
 
-    pipeline_result = run_pipeline(csv_path, batch_size=10, status="completed")
+    pipeline_result: dict[str, int | float] = run_pipeline(csv_path, batch_size=10, status="completed")
     print("аналітика конвеєра", pipeline_result)
 
 
